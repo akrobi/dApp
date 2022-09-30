@@ -40,7 +40,7 @@ def first_transaction_example(private_key, my_address):
     algod_client = algod.AlgodClient(
         purestake_key, endpoint_address, headers=purestake_header)
 
-    # to check your balance
+    # to check your balance on algorand
     account_info = algod_client.account_info(my_address)
     print("Account balance: {} microAlgos".format(
         account_info.get('amount')) + "\n")

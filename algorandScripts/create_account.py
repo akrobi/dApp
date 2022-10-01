@@ -27,18 +27,18 @@ def generate_algorand_keypair():
 
 def first_transaction_example(private_key, my_address):
     # creating the algod client with sandbox
-    # # algod_address depends on node client you use e.g. sandbox, purestake, etc
-    # algod_address = "https://testnet-algorand.api.purestake.io/idx2"
-    # # algod_token depends on node client you use. e.g. sandbox, purestake, etc
-    # algod_token = "Im9YmvFb539Ejkc16dQ729IRpYu4FVf34MygRwsG"
-    # algod_client = algod.AlgodClient(algod_token, algod_address)
+    # algod_address depends on node client you use e.g. sandbox, purestake, etc
+    algod_address = "https://testnet-algorand.api.purestake.io/ps2"
+    # algod_token depends on node client you use. e.g. sandbox, purestake, etc
+    algod_token = "Im9YmvFb539Ejkc16dQ729IRpYu4FVf34MygRwsG"
+    algod_client = algod.AlgodClient(algod_token, algod_address)
 
     # creating the algod client with a PureStake Key
-    purestake_key = 'Im9YmvFb539Ejkc16dQ729IRpYu4FVf34MygRwsG'
-    endpoint_address = 'https://testnet-algorand.api.purestake.io/ps1'
-    purestake_header = {'X-Api-key': purestake_key}
-    algod_client = algod.AlgodClient(
-        purestake_key, endpoint_address, headers=purestake_header)
+    # purestake_key = 'Im9YmvFb539Ejkc16dQ729IRpYu4FVf34MygRwsG'
+    # endpoint_address = 'https://testnet-algorand.api.purestake.io/ps1'
+    # purestake_header = {'X-Api-key': purestake_key}
+    # algod_client = algod.AlgodClient(
+    #     purestake_key, endpoint_address, headers=purestake_header)
 
     # to check your balance on algorand
     account_info = algod_client.account_info(my_address)
@@ -87,5 +87,5 @@ def first_transaction_example(private_key, my_address):
         account_info.get('amount')) + "\n")
 
 
-first_transaction_example("u/7dY70sUfe6/jOgmzDFIoQD1KdODtZkWJFgHdaj5GAOlUKhP4mCdblHytWl1+cjwl2wVimBGn0eysgT8VVlxw==",
-                          "B2KUFIJ7RGBHLOKHZLK2LV7HEPBF3MCWFGARU7I6ZLEBH4KVMXDS7BFWGU")
+first_transaction_example("OZhrTkDB1m6VGnh7piNbVXiSK8JnlQ+nBQd2scVcN6SvMICLUOYY7Gq8VntlZxQEshEQ+VoKGpG26mPB9ENzFA==",
+                          "V4YIBC2Q4YMOY2V4KZ5WKZYUASZBCEHZLIFBVENW5JR4D5CDOMKCXQVL3Y")

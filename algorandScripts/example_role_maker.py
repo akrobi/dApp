@@ -45,6 +45,7 @@ counter = 1
 for m in [mnemonic1, mnemonic2, mnemonic3]:
     accounts[counter] = {}
     accounts[counter]['pk'] = mnemonic.to_public_key(m)
+    # accounts[counter]['pk'] = account.address_from_private_key
     accounts[counter]['sk'] = mnemonic.to_private_key(m)
     counter += 1
 

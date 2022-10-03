@@ -11,8 +11,8 @@ import base64
 
 
 def generate_algorand_keypair():
-    private_key, public_address = account.generate_account()
-    print("My address: {}".format(public_address))
+    private_key, public_key = account.generate_account()
+    print("My address: {}".format(public_key))
     print("My private key: {}".format(private_key))
     print("My passphrase: {}".format(mnemonic.from_private_key(private_key)))
 

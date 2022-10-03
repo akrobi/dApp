@@ -64,25 +64,24 @@ def retrieve_txid(stxn):
 
     return txid
 
+
 # fn to create account to be used on the algorand blockchain
 # arguments: none
-# returns: private key, public key, and mnemonic of account
-
-
+# returns: private key, public key, and #mnemonic of account
 def create_acct():
     private_key, public_key = account.generate_account()
-    mymnemonic = mnemonic.from_private_key(private_key)
+    # mymnemonic = mnemonic.from_private_key(private_key)
 
-    return private_key, public_key, mymnemonic
+    return private_key, public_key
 
 
 # fn to create asset (certificates that are nfts, in our case)
 # arguments: public key of asset creator, private key of asset creator, public key of account to undergo account-type change
-# returns: transaction id
+# returns: asset id
 def create_asset(asset_creator_pk, asset_creator_sk, pk_of_acct_to_be_assigned):
     params = algod_client.suggested_params()
 
-    # Asset Creation transaction
+    # asset creation transaction
     txn = AssetConfigTxn(
         sender=asset_creator_pk,
         sp=params,
@@ -111,7 +110,7 @@ def create_asset(asset_creator_pk, asset_creator_sk, pk_of_acct_to_be_assigned):
     except Exception as e:
         print(e)
 
-    return txid
+    return asset_id
 
 
 # fn to change manager of the asset (the certificate nft)
@@ -190,7 +189,7 @@ def transfer_asset(asset_id, sender_pk, sender_sk, receiver_pk):
         sender=sender_pk,
         sp=params,
         receiver=receiver_pk,
-        amt=10,
+        amt=1,
         index=asset_id)
 
     stxn = txn.sign(sender_sk)
@@ -198,11 +197,7 @@ def transfer_asset(asset_id, sender_pk, sender_sk, receiver_pk):
     # send transaction to network to receive transaction id
     txid = retrieve_txid(stxn)
 
-    # The balance should now be 10. balance in receiver acct should be of 10 units of the asset
+    # the balance should now be 1. balance in receiver acct should be of 1 unit of the asset
     print_asset_holding(algod_client, receiver_pk, asset_id)
 
     return txid
-
-# fn to
-# arguments:
-# returns:

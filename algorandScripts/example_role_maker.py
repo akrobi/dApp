@@ -250,7 +250,7 @@ def transfer_asset(asset_id, sender_pk, receiver_pk):
         sender=accounts[1]['pk'],
         sp=params,
         receiver=accounts[3]["pk"],
-        amt=10,
+        amt=1,
         index=asset_id)
     stxn = txn.sign(accounts[1]['sk'])
     # Send the transaction to the network and retrieve the txid.
@@ -264,5 +264,5 @@ def transfer_asset(asset_id, sender_pk, receiver_pk):
             confirmed_txn['confirmed-round']))
     except Exception as err:
         print(err)
-    # The balance should now be 10. balance in receiver acct should be of 10 units of the asset
+    # The balance should now be 1. balance in receiver acct should be of 1 unit of the asset
     print_asset_holding(algod_client, accounts[3]['pk'], asset_id)
